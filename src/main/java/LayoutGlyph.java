@@ -113,5 +113,18 @@ public enum LayoutGlyph {
 	/**
 	 * Combination of MERGE_EXTEND, FORK_EXTEND and BRANCH
 	 */
-	MERGE_EXTEND_FORK_EXTEND_BRANCH,
+	MERGE_EXTEND_FORK_EXTEND_BRANCH;
+
+	public String toCamelCase() {
+		String camelCase = "";
+		String[] nameParts = this.toString().split("_");
+		for (int i = 0; i < nameParts.length; i++) {
+			if (i > 0) {
+		    	camelCase += nameParts[i].charAt(0) + nameParts[i].substring(1).toLowerCase();
+			} else {
+				camelCase += nameParts[i].toLowerCase();
+			}
+		}
+		return camelCase;
+	}
 }

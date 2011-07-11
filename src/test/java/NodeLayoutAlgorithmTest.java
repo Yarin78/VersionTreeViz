@@ -1,3 +1,6 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.Comparator;
 
 import org.testng.annotations.Test;
@@ -11,6 +14,7 @@ public class NodeLayoutAlgorithmTest {
 		Node<String> C = new MergeNode<String>(A, B, "C");
 
 		show(R);
+		showHtml(R, "/Users/yarin/Desktop/viz_test0.html");
 	}
 
 	@Test
@@ -27,6 +31,7 @@ public class NodeLayoutAlgorithmTest {
 		Node<String> I = new MergeNode<String>(G, H, "I");
 
 		show(R);
+		showHtml(R, "/Users/yarin/Desktop/viz_test1.html");
 	}
 
 	@Test
@@ -41,6 +46,7 @@ public class NodeLayoutAlgorithmTest {
 		Node<String> G = new CommitNode<String>(C, "G");
 
 		show(R);
+		showHtml(R, "/Users/yarin/Desktop/viz_test2.html");
 	}
 
 	@Test
@@ -60,6 +66,7 @@ public class NodeLayoutAlgorithmTest {
 		Node<String> I = new MergeNode<String>(E, F, "I");
 
 		show(R);
+		showHtml(R, "/Users/yarin/Desktop/viz_test3.html");
 	}
 
 	private void show(Node<String> r) {
@@ -86,9 +93,21 @@ public class NodeLayoutAlgorithmTest {
 		for (int i = 0; i < output.length; i++) {
 			System.out.println(output[i]);
 		}
+	}
 
-
-
+	private void showHtml(Node<String> r, String filename) {
+		NodeLayoutAlgorithm algorithm = new NodeLayoutAlgorithm();
+		NodeLayout layout = algorithm.createNodeLayout(r, new StringComparator());
+		String html = new HtmlLayoutFormatter().format(layout, "/Users/yarin/src/github/VersionTreeViz/src/main/resources");
+		File file = new File(filename);
+		PrintWriter writer;
+		try {
+			writer = new PrintWriter(file);
+		} catch (FileNotFoundException e) {
+			throw new RuntimeException();
+		}
+		writer.write(html);
+		writer.close();
 	}
 
 	public static class StringComparator implements Comparator<String> {
