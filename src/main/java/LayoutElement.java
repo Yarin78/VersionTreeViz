@@ -5,7 +5,8 @@ public class LayoutElement {
 		NONE,
 		ROOT,
 		COMMIT,
-		MERGE
+		MERGE,
+		MIRRORED_COMMIT
 	}
 
 	private Node node;
@@ -177,6 +178,13 @@ public class LayoutElement {
 					return LayoutGlyph.COMMIT_FORK;
 				}
 				return LayoutGlyph.COMMIT;
+
+			case MIRRORED_COMMIT:
+				assert ongoingBranch && !mergeEnd && !branchStart;
+				if (fork) {
+					return LayoutGlyph.COMMIT_MIRRORED_FORK;
+				}
+				return LayoutGlyph.COMMIT_MIRRORED;
 		}
 
 		throw new LayoutException();

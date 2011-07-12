@@ -13,7 +13,7 @@ public class NodeLayoutAlgorithm<T> {
 	 * @param comparator decides the order to traverse the nodes in the graph
 	 * @return a layout
 	 */
-	public NodeLayout createNodeLayout(Node<T> root, @Nullable Comparator<T> comparator) {
+	public NodeLayout createNodeLayout(Node<T> root, @Nullable Comparator<T> comparator){
 		Set<Integer> usedColumns = new HashSet<Integer>();
 		Map<Integer, Integer> branchColumnMap = new HashMap<Integer, Integer>();
 
@@ -90,7 +90,11 @@ public class NodeLayoutAlgorithm<T> {
 				element.setNodeType(LayoutElement.NodeType.MERGE);
 			} else {
 				// Should be commit node
-				element.setNodeType(LayoutElement.NodeType.COMMIT);
+				if (((CommitNode) node).isMirrored()) {
+					element.setNodeType(LayoutElement.NodeType.MIRRORED_COMMIT);
+				} else {
+					element.setNodeType(LayoutElement.NodeType.COMMIT);
+				}
 			}
 
 			element.setNode(node);

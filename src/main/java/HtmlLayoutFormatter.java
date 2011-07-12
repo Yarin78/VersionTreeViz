@@ -25,7 +25,8 @@ public class HtmlLayoutFormatter {
 
 			html.append("        <td>");
 			if (node != null) {
-				html.append(node.getData());
+				html.append("Line 1:" + node.getData());
+				html.append("<br />more data");
 			}
 			html.append("</td>\n");
 

@@ -53,15 +53,15 @@ public class NodeLayoutAlgorithmTest {
 	public void test3() {
 		Node<String> R = new RootNode<String>("R");
 		Node<String> A = new CommitNode<String>(R, "A");
-		Node<String> B = new CommitNode<String>(R, "B");
+		Node<String> B = new CommitNode<String>(R, "B", true);
 		Node<String> C = new CommitNode<String>(R, "C");
-		Node<String> D = new CommitNode<String>(R, "D");
+		Node<String> D = new CommitNode<String>(R, "D", true);
 
 		Node<String> E = new MergeNode<String>(B, A, "E");
 		Node<String> F = new MergeNode<String>(D, C, "F");
 
 		Node<String> G = new CommitNode<String>(E, "G");
-		Node<String> H = new CommitNode<String>(E, "H");
+		Node<String> H = new CommitNode<String>(E, "H", true);
 
 		Node<String> I = new MergeNode<String>(E, F, "I");
 
@@ -98,7 +98,8 @@ public class NodeLayoutAlgorithmTest {
 	private void showHtml(Node<String> r, String filename) {
 		NodeLayoutAlgorithm algorithm = new NodeLayoutAlgorithm();
 		NodeLayout layout = algorithm.createNodeLayout(r, new StringComparator());
-		String html = new HtmlLayoutFormatter().format(layout, "/Users/yarin/src/github/VersionTreeViz/src/main/resources");
+//		String html = new HtmlLayoutFormatter().format(layout, "/Users/yarin/src/github/VersionTreeViz/src/main/resources");
+		String html = new HtmlLayoutFormatter().format(layout, "/Users/yarin/Spotify/src/github/VersionTreeViz/src/main/resources");
 		File file = new File(filename);
 		PrintWriter writer;
 		try {

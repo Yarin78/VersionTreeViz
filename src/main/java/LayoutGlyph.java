@@ -36,6 +36,11 @@ public enum LayoutGlyph {
 	COMMIT,
 
 	/**
+	 * A special commit node (vertical line with a node)
+	 */
+	COMMIT_MIRRORED,
+
+	/**
 	 * Extension of a fork over multiple columns (horizontal line)
 	 */
 	FORK_EXTEND,
@@ -59,6 +64,11 @@ public enum LayoutGlyph {
 	 * A commit node which is also the start of a branch (vertical line with a node, and a horizontal dip)
 	 */
 	COMMIT_FORK,
+
+	/**
+	 * A special commit node which is also the start of a branch (vertical line with a node, and a horizontal dip)
+	 */
+	COMMIT_MIRRORED_FORK,
 
 	/**
 	 * A merge node

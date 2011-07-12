@@ -52,6 +52,7 @@ public class AsciiNodeLayoutFormatter {
 						" | ",
 						" | "};
 			case COMMIT:
+			case COMMIT_MIRRORED:
 				return new String[] {
 						" | ",
 						" o ",
@@ -78,6 +79,7 @@ public class AsciiNodeLayoutFormatter {
 						"-+-",
 						" | "};
 			case COMMIT_FORK:
+			case COMMIT_MIRRORED_FORK:
 				return new String[] {
 						" | ",
 						" o-",
