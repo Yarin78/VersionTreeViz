@@ -70,6 +70,16 @@ public class ImageGenerator {
 
 		File outputFile = new File("src/main/resources/" + glyph.toCamelCase() + ".png");
 		ImageIO.write(image, "png", outputFile);
+
+		BufferedImage mirroredImage = new BufferedImage(SIZE, SIZE, BufferedImage.TYPE_INT_ARGB);
+		for (int y = 0; y < SIZE; y++) {
+		    for (int x = 0; x < SIZE; x++) {
+		        mirroredImage.setRGB(x, y, image.getRGB(x, SIZE - y - 1));
+		    }
+		}
+
+		File mirrorOutputFile = new File("src/main/resources/" + glyph.toCamelCase() + "Mirror.png");
+		ImageIO.write(mirroredImage, "png", mirrorOutputFile);
 	}
 
 	private static void drawBranch(Graphics2D g) {
