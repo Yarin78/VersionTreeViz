@@ -46,7 +46,7 @@ public class ImageGenerator {
 
 		Graphics2D g = image.createGraphics();
 		g.setPaint(Color.WHITE);
-		g.fillRect(0, 0, SIZE, SIZE);
+//		g.fillRect(0, 0, SIZE, SIZE);
 		
 		g.setColor(Color.BLACK);
 		g.setStroke(new BasicStroke(LINE_WIDTH, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
